@@ -29,11 +29,7 @@ const nextConfig = {
     return [
       {
         source: '/api/:path*',
-        destination: 'http://localhost:8889/:path*', // 把 /api 去掉，转发到 Golang 后端
-      },
-      {
-        source: "/products/:path*",
-        destination: "http://100.64.0.2:9000/products/:path*", // 转发 /products 请求
+        destination: 'http://localhost:8899/:path*', // 把 /api 去掉，转发到 Golang 后端
       },
     ]
   },
