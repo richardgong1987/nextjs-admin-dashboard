@@ -9,18 +9,24 @@ import {
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LogOutIcon, SettingsIcon, UserIcon } from "./icons";
+import { UseUserInfoStore } from "@/store/userInfo-store";
+import { useRouter } from "next/navigation";
 
 export function UserInfo() {
   const [isOpen, setIsOpen] = useState(false);
+  const { token, user, expiresAt, clear } = UseUserInfoStore();
+  const router = useRouter();
+  useEffect(() => {
+    UseUserInfoStore.getState().initAutoRenew();
+  }, []);
 
   const USER = {
-    name: "John Smith",
-    email: "johnson@nextadmin.com",
+    name: user.userName,
+    email: user.email,
     img: "/images/user/user-03.png",
   };
-
   return (
     <Dropdown isOpen={isOpen} setIsOpen={setIsOpen}>
       <DropdownTrigger className="rounded align-middle outline-none ring-primary ring-offset-2 focus-visible:ring-1 dark:ring-offset-gray-dark">
