@@ -30,7 +30,10 @@ export default function SigninWithPassword() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    const res = await ApiUser.Login(data);
+    const res = await ApiUser.Login({
+      username: data.username,
+      password: data.password,
+    });
     setLoading(false);
     console.log(res);
     if (res.code === 0 && res.data?.token) {

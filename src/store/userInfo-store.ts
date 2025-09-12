@@ -36,17 +36,18 @@ const emptyUserInfo: IUser = {
     dataAuthorityId: null,
     defaultRouter: "",
     menus: null,
-    parentId: 0,
+    parentId: 0
   },
   authorityId: 0,
-  username: "",
+  email: "",
   enable: 0,
   headerImg: "",
   nickName: "",
   originSetting: null,
   phone: "",
   userName: "",
-  uuid: "",
+  uuid: ""
+
 };
 
 let renewTimer: any = null;

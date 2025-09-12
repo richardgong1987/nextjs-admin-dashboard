@@ -1,3 +1,4 @@
+'use client'
 import type { PropsWithChildren } from "react";
 import "@/css/satoshi.css";
 import "@/css/style.css";
