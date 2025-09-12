@@ -7,10 +7,5 @@ export enum RESPONSE_CODE {
 }
 
 export enum PAGES {
-    LOGIN = '/shop/login',
-    REGISTER = "/shop/register",
-    HOME = '/shop/',
-    CART = '/shop/cart',
-    MEMBER_DASHBOARD = '/shop/member',
-    MEMBER_ORDERS = '/shop/member/orders/?page=1&pageSize=25',
+    PAGE_DASHBOARD = '/admin/',
 }

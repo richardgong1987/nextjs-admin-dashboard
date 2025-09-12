@@ -1,4 +1,3 @@
-
 export interface IUser {
   ID: number;
   CreatedAt: string;
@@ -27,4 +26,9 @@ export interface Authority {
   children: null;
   menus: null;
   defaultRouter: string;
+}
+
+export interface LoginBody {
+  password: string;
+  username: string;
 }

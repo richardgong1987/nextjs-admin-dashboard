@@ -4,14 +4,20 @@ import Link from "next/link";
 import React, { useState } from "react";
 import InputGroup from "../FormElements/InputGroup";
 import { Checkbox } from "../FormElements/checkbox";
+import { ApiUser } from "@/lib/api/api-user";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+import { UseUserInfoStore } from "@/store/userInfo-store";
+import { PAGES } from "@/lib/constant";
 
 export default function SigninWithPassword() {
   const [data, setData] = useState({
-    email: process.env.NEXT_PUBLIC_DEMO_USER_MAIL || "",
-    password: process.env.NEXT_PUBLIC_DEMO_USER_PASS || "",
+    username: "",
+    password: "",
     remember: false,
   });
-
+  const { Login } = UseUserInfoStore();
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,28 +27,36 @@ export default function SigninWithPassword() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    // You can remove this code block
     setLoading(true);
-
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
+    const res = await ApiUser.Login(data);
+    setLoading(false);
+    console.log(res);
+    if (res.code === 0 && res.data?.token) {
+      toast.success("ログインに成功しました");
+      Login(res.data.user, res.data.token, res.data.expiresAt);
+      // 登录成功后的逻辑
+      const redirectPath = sessionStorage.getItem("redirect_after_login");
+      if (redirectPath) {
+        sessionStorage.removeItem("redirect_after_login");
+        router.replace(redirectPath);
+      } else {
+        router.replace(PAGES.PAGE_DASHBOARD);
+      }
+    }
   };
-
   return (
     <form onSubmit={handleSubmit} className="mx-auto w-full max-w-sm">
       <div>
         <InputGroup
-          type="email"
-          label="Email"
+          type="text"
+          label="Username"
           className="mb-4 [&_input]:py-[15px]"
-          placeholder="Enter your email"
-          name="email"
+          placeholder="Enter your username"
+          name="username"
           handleChange={handleChange}
-          value={data.email}
+          value={data.username}
           icon={<EmailIcon />}
         />
 

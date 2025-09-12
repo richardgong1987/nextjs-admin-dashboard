@@ -39,7 +39,7 @@ const emptyUserInfo: IUser = {
     parentId: 0,
   },
   authorityId: 0,
-  email: "",
+  username: "",
   enable: 0,
   headerImg: "",
   nickName: "",
