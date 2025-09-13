@@ -4,7 +4,7 @@ import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import { GetSessionStorage } from "@/utils/Biz-Utils";
 import { USER_STORAGE_KEY } from "@/store/constant";
-import { ApiUser } from "@/lib/api/api-user";
+import { ApiUser } from "@/lib/api/system/api-user";
 import { IUser } from "@/lib/interface/user.interface";
 
 type State = {

@@ -9,6 +9,7 @@ import { NAV_DATA } from "./data";
 import { ArrowLeftIcon, ChevronUp } from "./icons";
 import { MenuItem } from "./menu-item";
 import { useSidebarContext } from "./sidebar-context";
+import { ApiMenu } from "@/lib/api/system/menu";
 
 export function Sidebar() {
   const pathname = usePathname();
@@ -25,6 +26,12 @@ export function Sidebar() {
   };
 
   useEffect(() => {
+    let iMenuRes = ApiMenu.getMenu().then((res) => {
+      if (res.code == 0) {
+        const menu = res.data.menus;
+        console.log(menu);
+      }
+    });
     // Keep collapsible open, when it's subpage is active
     NAV_DATA.some((section) => {
       return section.items.some((item) => {

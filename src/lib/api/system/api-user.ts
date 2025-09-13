@@ -1,6 +1,6 @@
 import { CommonResponse, httpService } from "@/lib/http";
 import { RESPONSE_CODE } from "@/lib/constant";
-import { ILoginRes } from "@/lib/interface/res.interface";
+import { ILoginRes } from "@/lib/interface/res.login.interface";
 import { LoginBody } from "@/lib/interface/user.interface";
 
 export class ApiUser {

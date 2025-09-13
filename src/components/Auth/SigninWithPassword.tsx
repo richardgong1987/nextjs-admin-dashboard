@@ -4,7 +4,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import InputGroup from "../FormElements/InputGroup";
 import { Checkbox } from "../FormElements/checkbox";
-import { ApiUser } from "@/lib/api/api-user";
+import { ApiUser } from "@/lib/api/system/api-user";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { UseUserInfoStore } from "@/store/userInfo-store";
