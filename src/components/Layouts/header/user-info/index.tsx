@@ -16,7 +16,7 @@ import { useRouter } from "next/navigation";
 
 export function UserInfo() {
   const [isOpen, setIsOpen] = useState(false);
-  const { token, user, expiresAt, clear } = UseUserInfoStore();
+  const { token, user, expiresAt, clear,Logout } = UseUserInfoStore();
   const router = useRouter();
   useEffect(() => {
     UseUserInfoStore.getState().initAutoRenew();
@@ -116,7 +116,10 @@ export function UserInfo() {
           >
             <LogOutIcon />
 
-            <span className="text-base font-medium">Log out</span>
+            <span className="text-base font-medium" onClick={()=>{
+              Logout();
+              router.push("/");
+            }}>Log out</span>
           </button>
         </div>
       </DropdownContent>

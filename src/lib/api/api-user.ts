@@ -15,7 +15,7 @@ export class ApiUser {
     return (await httpService.GET("/api/base/renew-token")) as ILoginRes;
   }
   static async Logout() {
-    return await httpService.GET("/api/base/logout");
+    // return await httpService.GET("/api/base/logout");
   }
 
   static async Login(body: LoginBody) {
